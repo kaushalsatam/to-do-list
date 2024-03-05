@@ -1,12 +1,13 @@
 const date = new Date();
 
-let week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 let weekDay = week[date.getDay()];
 let day = date.getDate();
 let month = date.getMonth() + 1;
 let year = date.getFullYear();
 
+// Show current Day and Date
 let currentDate = `${day}-${month}-${year}`;
 
 $("#day").text(weekDay + ",");
@@ -14,6 +15,7 @@ $("#date").text(currentDate);
 
 let noOfTasks = 1;
 
+// Add tasks
 $("button").on("click", () => {
     let task = prompt("Task name:");
     if(task !== null){
@@ -24,12 +26,7 @@ $("button").on("click", () => {
     }
 });
 
-// Wrong method
-// $("#svg" + noOfTasks).on("click", () => {
-//     $("#task-container" + noOfTasks).remove();
-// });
-
-// Event delegation for dynamically added elements
+// Event delegation for dynamically added tasks
 $("form").on("click", "[id^=svg]", function() {
     $(this).closest('div[id^="task-container"]').remove();
 });
